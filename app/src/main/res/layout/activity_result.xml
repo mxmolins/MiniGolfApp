@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+    <include
+        android:id="@+id/toolbar"
+        layout="@layout/view_toolbar"/>
+
+    <TextView
+        android:id="@+id/winner_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/toolbar"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="12dp"
+        android:textColor="@color/c_66bb6a"
+        android:text="@string/AND_THE_WINNER_IS"
+        android:textSize="22sp"/>
+
+    <ImageView
+        android:id="@+id/winner_icon"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_below="@+id/winner_title"
+        android:layout_centerHorizontal="true"
+        android:background="@drawable/penguin_result_icon"/>
+
+    <TextView
+        android:id="@+id/winner_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/winner_icon"
+        android:layout_centerHorizontal="true"
+        android:textColor="@color/c_66bb6a"
+        android:textSize="36sp"/>
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/recycler_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/winner_text"
+        android:clipChildren="false"
+        android:clipToPadding="false"
+        android:padding="16dp"/>
+
+</RelativeLayout>

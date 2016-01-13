@@ -1,0 +1,35 @@
+<resources>
+    <string name="app_name">MiniGolfApp</string>
+    <string name="action_settings">Settings</string>
+    <string name="NEW_GAME">New Game</string>
+    <string name="NEW_GAME_SETTINGS">New Game Settings</string>
+    <string name="CONTINUE">Continue</string>
+    <string name="INFORMATION">Information</string>
+    <string name="SCORE_APP">Score App</string>
+    <string name="MINI_GOLF">Mini Golf</string>
+    <string name="INTRODUCE_PLAYER_NUMBER">Introduce the number of players</string>
+    <string name="INTRODUCE_HOLE_NUMBER">Introduce the number of the holes</string>
+    <string name="ASK_MINI_GOLF">( ask minigolf )</string>
+    <string name="TYPE_PLAYER_NAME">Introduce the name of players</string>
+    <string name="CONTINUE_GAME">Continue game</string>
+    <string name="DATE">Date</string>
+    <string name="PLAYERS">Players</string>
+    <string name="STATUS">Status</string>
+    <string name="GAME_FINISHED">GAME FINISHED</string>
+    <string name="CONTINUE_TO_HOLE">Continue to hole %d</string>
+    <string name="SHOTS">shots</string>
+    <string name="HOLE_INFO" formatted="false">Hole %d of %d</string>
+    <string name="PLAYER_INFO" formatted="false">Per %d</string>
+    <string name="CANCEL_b">CANCEL</string>
+    <string name="OK_b">OK</string>
+    <string name="SURE_GO_BACK">Are you sure you want to go back to hole %d?</string>
+    <string name="SURE_GO_PREVIOUS_SCREEN">Are you sure you want to go back to previous screen?</string>
+    <string name="BACK">Back</string>
+    <string name="INFORMATION_START">Lorem ipsum dolor sit ames.</string>
+    <string name="PLAYER_NO">Player no. %d</string>
+    <string name="AND_THE_WINNER_IS">And the winner is..</string>
+    <string name="CLOSE">Close</string>
+    <string name="TURN_STATUS">Turn %d</string>
+    <string name="RESULT">Result</string>
+    <string name="SCOREBOARD">Scoreboard</string>
+</resources>
