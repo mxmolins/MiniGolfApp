@@ -38,7 +38,7 @@ public class GameSaveSharePrefUtil {
         ArrayList<Game> newGameList = new ArrayList<>();
         boolean gameIsAdded = false;
         for (Game gameItem : gameList) {
-            if (gameItem.getStartingTimeInMilisecond() == game.getStartingTimeInMilisecond()) {
+            if (gameItem.getStartingTimeInMillisecond() == game.getStartingTimeInMillisecond()) {
                 newGameList.add(game);
                 gameIsAdded = true;
             } else {
@@ -67,7 +67,7 @@ public class GameSaveSharePrefUtil {
 
         HashSet<String> gameSet = new HashSet<>();
         for (Game gameItem : gameList) {
-            if (gameItem.getStartingTimeInMilisecond() != game.getStartingTimeInMilisecond()) {
+            if (gameItem.getStartingTimeInMillisecond() != game.getStartingTimeInMillisecond()) {
                 gameSet.add(gson.toJson(gameItem));
             }
         }

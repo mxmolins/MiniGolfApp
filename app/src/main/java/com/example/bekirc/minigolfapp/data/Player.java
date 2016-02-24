@@ -32,6 +32,9 @@ public class Player implements Parcelable {
         this.name = name;
         this.totalTurnNumber = totalTurnNumber;
         this.scoreList = new int[totalTurnNumber];
+        for(int i = 0; i < totalTurnNumber; i++){
+            scoreList[i] = 1;
+        }
     }
 
     public Player(JsonObject jsonObject, JsonDeserializationContext context) {
@@ -65,6 +68,8 @@ public class Player implements Parcelable {
     }
 
     public int getScoreByTurnNumber(int turnNumber) {
+        //cause array starts from 0 but turns starts from 1
+        turnNumber = turnNumber - 1;
         if (scoreList == null || scoreList.length < turnNumber) {
             return 0;
         }
@@ -72,15 +77,16 @@ public class Player implements Parcelable {
     }
 
     public void setScoreByTurnNumber(int turnNumber, int scoreByTurn) {
+        turnNumber = turnNumber - 1;
         scoreList[turnNumber] = scoreByTurn;
     }
 
     public void increaseScoreByTurnNumber(int turnNumber) {
-        scoreList[turnNumber]++;
+        scoreList[turnNumber - 1]++;
     }
 
     public void decreaseScoreByTurnNumber(int turnNumber) {
-        scoreList[turnNumber]--;
+        scoreList[turnNumber - 1]--;
     }
 
     protected Player(Parcel in) {

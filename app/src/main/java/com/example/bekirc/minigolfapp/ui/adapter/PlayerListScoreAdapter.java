@@ -9,6 +9,7 @@ import android.widget.TextView;
 
 import com.example.bekirc.minigolfapp.R;
 import com.example.bekirc.minigolfapp.data.Player;
+import com.example.bekirc.minigolfapp.ui.fragment.GameFragment;
 
 import java.util.ArrayList;
 
@@ -62,7 +63,9 @@ public class PlayerListScoreAdapter extends RecyclerView.Adapter<PlayerListScore
         String playerNoText = (position + 1) + "";
         holder.playerNoText.setText(playerNoText);
         holder.playerNameText.setText(item.getName());
-        String playerScoreText = item.getScoreByTurnNumber(turnNumber) + "";
+        int playerScore = item.getScoreByTurnNumber(turnNumber);
+        holder.setScore(playerScore);
+        String playerScoreText = playerScore + "";
         holder.playerScoreText.setText(playerScoreText);
         holder.setPosition(position);
     }
@@ -107,6 +110,9 @@ public class PlayerListScoreAdapter extends RecyclerView.Adapter<PlayerListScore
 
         @OnClick(R.id.player_score_up)
         public void onScoreUpClicked() {
+            if (score >= GameFragment.MAX_SHOT_NUMBER) {
+                return;
+            }
             score = score + 1;
             String scoreText = score + "";
             playerScoreText.setText(scoreText);
@@ -117,6 +123,9 @@ public class PlayerListScoreAdapter extends RecyclerView.Adapter<PlayerListScore
 
         @OnClick(R.id.player_score_down)
         public void onScoreDownClicked() {
+            if (score <= GameFragment.MIN_SHOT_NUMBER) {
+                return;
+            }
             score = score - 1;
             String scoreText = score + "";
             playerScoreText.setText(scoreText);

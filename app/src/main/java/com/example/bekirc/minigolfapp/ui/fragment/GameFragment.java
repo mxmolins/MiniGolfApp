@@ -27,6 +27,9 @@ public class GameFragment extends BaseFragment implements PlayerListScoreAdapter
     public static final String TOTAL_TURN_NUMBER = "totalTurnNumber";
     public static final String GAME_TURN = "gameTurn";
 
+    public static final int MIN_SHOT_NUMBER = 1;
+    public static final int MAX_SHOT_NUMBER = 7;
+
     private int gameTurn;
     private int totalTurnNumber;
     private ArrayList<Player> playerList;
@@ -76,8 +79,8 @@ public class GameFragment extends BaseFragment implements PlayerListScoreAdapter
         PlayerListScoreAdapter adapter = new PlayerListScoreAdapter(getBaseActivity(), playerList, this, gameTurn);
         recyclerView.setAdapter(adapter);
 
-        holeNumberText.setText(getString(R.string.HOLE_INFO, gameTurn + 1, totalTurnNumber));
-        playerNumberText.setText(getString(R.string.PLAYER_INFO, playerList.size()));
+        holeNumberText.setText(getString(R.string.HOLE_INFO, gameTurn, totalTurnNumber));
+        playerNumberText.setText(getString(R.string.PLAYER_INFO, getString(R.string.per_number)));
         return view;
     }
 
@@ -93,12 +96,20 @@ public class GameFragment extends BaseFragment implements PlayerListScoreAdapter
 
     @Override
     public void onScoreUp(int position) {
+        int playerScore = playerList.get(position).getScoreByTurnNumber(gameTurn);
+        if (playerScore >= MAX_SHOT_NUMBER) {
+            return;
+        }
         playerList.get(position).increaseScoreByTurnNumber(gameTurn);
         listener.setPlayerScores(gameTurn, playerList);
     }
 
     @Override
     public void onScoreDown(int position) {
+        int playerScore = playerList.get(position).getScoreByTurnNumber(gameTurn);
+        if (playerScore <= MIN_SHOT_NUMBER) {
+            return;
+        }
         playerList.get(position).decreaseScoreByTurnNumber(gameTurn);
         listener.setPlayerScores(gameTurn, playerList);
     }

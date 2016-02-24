@@ -11,7 +11,6 @@ import com.example.bekirc.minigolfapp.data.Player;
 import com.example.bekirc.minigolfapp.misc.GameSaveSharePrefUtil;
 import com.example.bekirc.minigolfapp.ui.fragment.BaseFragment;
 import com.example.bekirc.minigolfapp.ui.fragment.GameFragment;
-import com.example.bekirc.minigolfapp.ui.fragment.dialog.InfoDialogFragment;
 import com.example.bekirc.minigolfapp.ui.fragment.dialog.PreviousGameDialogFragment;
 import com.example.bekirc.minigolfapp.ui.fragment.dialog.PreviousScreenDialogFragment;
 import com.example.bekirc.minigolfapp.ui.fragment.dialog.ResultDialogFragment;
@@ -28,10 +27,9 @@ public class ContinueGameActivity extends BaseActionBarActivity implements GameF
         PreviousScreenDialogFragment.PreviousScreenDialogFragmentListener {
 
     public static final String GAME = "game";
-    public static final String GAME_TURN = "gameTurn";
 
     private Game game;
-    private int currentGameTurn = 0;
+    private int currentGameTurn = Game.MIN_GAME_TURN;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -43,7 +41,15 @@ public class ContinueGameActivity extends BaseActionBarActivity implements GameF
 
         Bundle bundle = getIntent().getExtras();
         game = bundle.getParcelable(GAME);
-        currentGameTurn = bundle.getInt(GAME_TURN, 0);
+
+        if (savedInstanceState != null) {
+            game = savedInstanceState.getParcelable(GAME);
+        }
+
+        if (game != null) {
+            currentGameTurn = game.getCurrentTurn();
+            game.setStatus(getString(R.string.TURN_STATUS, currentGameTurn));
+        }
 
         goToCorrectGameTurnPage(currentGameTurn);
     }
@@ -117,7 +123,7 @@ public class ContinueGameActivity extends BaseActionBarActivity implements GameF
     void onContinueButtonClicked() {
         currentGameTurn++;
         game.setCurrentTurn(currentGameTurn);
-        if (currentGameTurn + 1 > game.getTotalTurnNumber()) {
+        if (currentGameTurn > game.getTotalTurnNumber()) {
             game.setStatus(getString(R.string.GAME_FINISHED));
             Intent intent = new Intent(this, ResultActivity.class);
             Bundle bundle = new Bundle();
@@ -132,7 +138,7 @@ public class ContinueGameActivity extends BaseActionBarActivity implements GameF
 
     @Override
     public void onBackPressed() {
-        if (currentGameTurn > 0) {
+        if (currentGameTurn > Game.MIN_GAME_TURN) {
             int previousGameTurn = currentGameTurn - 1;
             showDialogFragment(PreviousGameDialogFragment.newInstance(previousGameTurn), PreviousGameDialogFragment.TAG);
         } else {
@@ -156,5 +162,11 @@ public class ContinueGameActivity extends BaseActionBarActivity implements GameF
     @Override
     public void onPreviousScreenOkayButtonClicked() {
         finish();
+    }
+
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        outState.putParcelable(GAME, game);
     }
 }

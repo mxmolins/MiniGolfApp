@@ -20,8 +20,16 @@ import butterknife.OnClick;
  */
 public class NewGameActivity extends BaseActionBarActivity {
 
-    private int playerNumber = 0;
-    private int holeNumber = 0;
+    private static final int MIN_PLAYER_NUMBER = 1;
+    private static final int DEFAULT_PLAYER_NUMBER = 4;
+    private static final int DEFAULT_HOLE_NUMBER = 15;
+    private static final int MIN_HOLE_NUMBER = 1;
+
+    private static final String PLAYER_NUMBER = "playerNumber";
+    private static final String HOLE_NUMBER = "holeNumber";
+
+    private int playerNumber = DEFAULT_PLAYER_NUMBER;
+    private int holeNumber = DEFAULT_HOLE_NUMBER;
 
     @InjectView(R.id.player_number_text)
     TextView playerNumberText;
@@ -33,7 +41,15 @@ public class NewGameActivity extends BaseActionBarActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_new_game);
 
+        if (savedInstanceState != null) {
+            playerNumber = savedInstanceState.getInt(PLAYER_NUMBER, DEFAULT_PLAYER_NUMBER);
+            holeNumber = savedInstanceState.getInt(HOLE_NUMBER, DEFAULT_HOLE_NUMBER);
+        }
+
         setTitle(R.string.NEW_GAME_SETTINGS);
+
+        playerNumberText.setText(playerNumber + "");
+        holeNumberText.setText(holeNumber + "");
     }
 
     @Override
@@ -65,7 +81,7 @@ public class NewGameActivity extends BaseActionBarActivity {
 
     @OnClick(R.id.player_number_down_button)
     void onDecreasePlayerNumberclicked() {
-        if (playerNumber <= 0) {
+        if (playerNumber <= MIN_PLAYER_NUMBER) {
             return;
         }
         playerNumber = playerNumber - 1;
@@ -80,7 +96,7 @@ public class NewGameActivity extends BaseActionBarActivity {
 
     @OnClick(R.id.hole_number_down_button)
     void onDecreaseHoleNumberclicked() {
-        if (holeNumber <= 0) {
+        if (holeNumber <= MIN_HOLE_NUMBER) {
             return;
         }
         holeNumber = holeNumber - 1;
@@ -109,5 +125,12 @@ public class NewGameActivity extends BaseActionBarActivity {
             i++;
         }
         return game;
+    }
+
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        outState.putInt(PLAYER_NUMBER, playerNumber);
+        outState.putInt(HOLE_NUMBER, holeNumber);
     }
 }

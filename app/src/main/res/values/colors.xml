@@ -13,4 +13,8 @@
 
     <color name="white">#ffffff</color>
     <color name="c_66bb6a">#66bb6a</color>
+    <color name="white_ffffff">#ffffff</color>
+
+    <color name="style_color_accent">#FB8C00</color>
+    <color name="btn_default_pressed">#e05c00</color>
 </resources>

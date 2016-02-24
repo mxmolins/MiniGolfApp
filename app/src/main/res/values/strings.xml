@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">MiniGolfApp</string>
+
     <string name="action_settings">Settings</string>
     <string name="NEW_GAME">New Game</string>
     <string name="NEW_GAME_SETTINGS">New Game Settings</string>
@@ -19,7 +19,7 @@
     <string name="CONTINUE_TO_HOLE">Continue to hole %d</string>
     <string name="SHOTS">shots</string>
     <string name="HOLE_INFO" formatted="false">Hole %d of %d</string>
-    <string name="PLAYER_INFO" formatted="false">Per %d</string>
+    <string name="PLAYER_INFO" formatted="false">Per %s</string>
     <string name="CANCEL_b">CANCEL</string>
     <string name="OK_b">OK</string>
     <string name="SURE_GO_BACK">Are you sure you want to go back to hole %d?</string>
@@ -32,4 +32,8 @@
     <string name="TURN_STATUS">Turn %d</string>
     <string name="RESULT">Result</string>
     <string name="SCOREBOARD">Scoreboard</string>
+    <string name="SHARE_WITH_FRIENDS">Share with your friends</string>
+    <string name="SHARE_ON_WHATSAPP">Share on WhatsApp</string>
+    <string name="SHARE_ON_FACEBOOK">Share on Facebook</string>
+    <string name="SHARE_ON_OTHER">Share on other social networks</string>
 </resources>

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- FACEBOOK APP ID -->
+    <string name="facebook_app_id" translatable="false">920467058061188</string>
+
+    <string name="per_number" translatable="false">2</string>
+
+    <string name="app_name">MiniGolfApp</string>
+
+</resources>

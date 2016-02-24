@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:fab="http://schemas.android.com/apk/res-auto"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="vertical">
@@ -15,8 +16,8 @@
         android:layout_below="@+id/toolbar"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="12dp"
-        android:textColor="@color/c_66bb6a"
         android:text="@string/AND_THE_WINNER_IS"
+        android:textColor="@color/c_66bb6a"
         android:textSize="22sp"/>
 
     <ImageView
@@ -44,5 +45,52 @@
         android:clipChildren="false"
         android:clipToPadding="false"
         android:padding="16dp"/>
+
+    <com.getbase.floatingactionbutton.FloatingActionsMenu
+        android:id="@+id/fab_main"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginBottom="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginRight="16dp"
+        fab:fab_addButtonColorNormal="@color/style_color_accent"
+        fab:fab_addButtonColorPressed="@color/btn_default_pressed"
+        fab:fab_addButtonPlusIconColor="@color/white_ffffff"
+        fab:fab_labelStyle="@style/menu_labels_style"
+        fab:fab_labelsPosition="left">
+
+        <com.getbase.floatingactionbutton.FloatingActionButton
+            android:id="@+id/fab_share_on_facebook"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            fab:fab_colorNormal="@color/colorPrimary"
+            fab:fab_colorPressed="@color/colorPrimaryDark"
+            fab:fab_icon="@drawable/ic_menu_share"
+            fab:fab_size="mini"
+            fab:fab_title="@string/SHARE_ON_FACEBOOK"/>
+
+        <com.getbase.floatingactionbutton.FloatingActionButton
+            android:id="@+id/fab_share_on_whatsapp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            fab:fab_colorNormal="@color/colorPrimary"
+            fab:fab_colorPressed="@color/colorPrimaryDark"
+            fab:fab_icon="@drawable/ic_menu_share"
+            fab:fab_size="mini"
+            fab:fab_title="@string/SHARE_ON_WHATSAPP"/>
+
+        <com.getbase.floatingactionbutton.FloatingActionButton
+            android:id="@+id/fab_share_on_others"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            fab:fab_colorNormal="@color/dark_grey"
+            fab:fab_icon="@drawable/ic_menu_share"
+            fab:fab_size="mini"
+            fab:fab_title="@string/SHARE_ON_OTHER"/>
+
+    </com.getbase.floatingactionbutton.FloatingActionsMenu>
 
 </RelativeLayout>

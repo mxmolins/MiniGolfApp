@@ -27,20 +27,22 @@ public class Game implements Parcelable {
     private static final String PLAYER_LIST = "playerList";
     private static final String TOTAL_TURN_NUMBER = "totalTurnNumber";
     private static final String CURRENT_TURN = "currentTurn";
-    private static final String MILISECOND = "milisecond";
+    private static final String MILLISECOND = "milisecond";
+
+    public static final int MIN_GAME_TURN = 1;
 
     private String date;
     private String status = "";
     private int totalTurnNumber;
     private int currentTurn;
-    private long startingTimeInMilisecond;
+    private long startingTimeInMillisecond;
     private List<Player> playerList;
 
-    public Game(String date, int totalTurnNumber, long startingTimeInMilisecond) {
+    public Game(String date, int totalTurnNumber, long startingTimeInMillisecond) {
         this.date = date;
         this.totalTurnNumber = totalTurnNumber;
-        this.currentTurn = 0;
-        this.startingTimeInMilisecond = startingTimeInMilisecond;
+        this.currentTurn = MIN_GAME_TURN;
+        this.startingTimeInMillisecond = startingTimeInMillisecond;
         playerList = new ArrayList<>();
     }
 
@@ -49,7 +51,7 @@ public class Game implements Parcelable {
         this.status = context.deserialize(jsonObject.get(STATUS), String.class);
         this.currentTurn = context.deserialize(jsonObject.get(CURRENT_TURN), Integer.class);
         this.totalTurnNumber = context.deserialize(jsonObject.get(TOTAL_TURN_NUMBER), Integer.class);
-        this.startingTimeInMilisecond = context.deserialize(jsonObject.get(MILISECOND), Long.class);
+        this.startingTimeInMillisecond = context.deserialize(jsonObject.get(MILLISECOND), Long.class);
         this.playerList = new ArrayList<>();
         JsonArray playerListJsonArray = jsonObject.getAsJsonArray(PLAYER_LIST);
         if (playerListJsonArray != null) {
@@ -93,8 +95,8 @@ public class Game implements Parcelable {
         return currentTurn;
     }
 
-    public long getStartingTimeInMilisecond() {
-        return startingTimeInMilisecond;
+    public long getStartingTimeInMillisecond() {
+        return startingTimeInMillisecond;
     }
 
     public void setCurrentTurn(int currentTurn) {
@@ -110,7 +112,7 @@ public class Game implements Parcelable {
         status = in.readString();
         totalTurnNumber = in.readInt();
         currentTurn = in.readInt();
-        startingTimeInMilisecond = in.readLong();
+        startingTimeInMillisecond = in.readLong();
         playerList = new ArrayList<>();
         playerList = in.createTypedArrayList(Player.CREATOR);
     }
@@ -138,7 +140,7 @@ public class Game implements Parcelable {
         dest.writeString(status);
         dest.writeInt(totalTurnNumber);
         dest.writeInt(currentTurn);
-        dest.writeLong(startingTimeInMilisecond);
+        dest.writeLong(startingTimeInMillisecond);
         dest.writeTypedList(playerList);
     }
 
@@ -150,7 +152,7 @@ public class Game implements Parcelable {
             result.add(STATUS, new JsonPrimitive(src.status));
             result.add(TOTAL_TURN_NUMBER, new JsonPrimitive(src.totalTurnNumber));
             result.add(CURRENT_TURN, new JsonPrimitive(src.currentTurn));
-            result.add(MILISECOND, new JsonPrimitive(src.startingTimeInMilisecond));
+            result.add(MILLISECOND, new JsonPrimitive(src.startingTimeInMillisecond));
             JsonArray scoreListJsonArray = new JsonArray();
             for (Player player : src.playerList) {
                 scoreListJsonArray.add(context.serialize(player));
