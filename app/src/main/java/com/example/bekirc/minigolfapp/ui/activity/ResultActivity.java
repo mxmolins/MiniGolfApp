@@ -12,6 +12,9 @@ import com.example.bekirc.minigolfapp.R;
 import com.example.bekirc.minigolfapp.data.Game;
 import com.example.bekirc.minigolfapp.data.Player;
 import com.example.bekirc.minigolfapp.ui.adapter.ResultAdapter;
+import com.example.bekirc.minigolfapp.ui.fragment.dialog.GameFinishedDialogFragment;
+import com.example.bekirc.minigolfapp.ui.fragment.dialog.RecommendOnPlayDialogFragment;
+import com.example.bekirc.minigolfapp.ui.fragment.dialog.SuggestionsDialogFragment;
 import com.example.bekirc.minigolfapp.ui.misc.DividerItemDecoration;
 
 import java.util.ArrayList;
@@ -21,7 +24,9 @@ import butterknife.InjectView;
 /**
  * @author bekirc on 03.12.15.
  */
-public class ResultActivity extends BaseActionBarActivity {
+public class ResultActivity extends BaseActionBarActivity implements GameFinishedDialogFragment.GameFinishedDialogFragmentListener,
+        RecommendOnPlayDialogFragment.RecommendOnPlayDialogFragmentListener,
+        SuggestionsDialogFragment.SuggestionsDialogFragmentListener {
 
     public static final String GAME = "game";
 
@@ -67,9 +72,7 @@ public class ResultActivity extends BaseActionBarActivity {
         }
 
         if (id == R.id.action_close) {
-            Intent intent = new Intent(this, HomeActivity.class);
-            intent.setFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP | Intent.FLAG_ACTIVITY_CLEAR_TOP);
-            startActivity(intent);
+            showDialogFragment(GameFinishedDialogFragment.newInstance(), GameFinishedDialogFragment.TAG);
             return true;
         }
 
@@ -95,5 +98,38 @@ public class ResultActivity extends BaseActionBarActivity {
             toolbar.setNavigationIcon(R.drawable.ic_navigation_arrow_white);
             //toolbar.setLogo(R.drawable.ic_logo);
         }
+    }
+
+    private void goToHomeActivity() {
+        Intent intent = new Intent(this, HomeActivity.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP | Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        startActivity(intent);
+    }
+
+    @Override
+    public void onUserNotEnjoyedPressed() {
+        showDialogFragment(SuggestionsDialogFragment.newInstance(), SuggestionsDialogFragment.TAG);
+    }
+
+    @Override
+    public void onUserEnjoyedPressed() {
+        showDialogFragment(RecommendOnPlayDialogFragment.newInstance(), RecommendOnPlayDialogFragment.TAG);
+    }
+
+    @Override
+    public void onDialogCanceled() {
+        goToHomeActivity();
+    }
+
+    @Override
+    public void onRecommendOnPlayPressed() {
+        //todo
+        goToHomeActivity();
+    }
+
+    @Override
+    public void onSuggestionSendButtonPressed(String suggestion) {
+        //todo
+        goToHomeActivity();
     }
 }

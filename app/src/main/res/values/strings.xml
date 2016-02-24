@@ -36,4 +36,10 @@
     <string name="SHARE_ON_WHATSAPP">Share on WhatsApp</string>
     <string name="SHARE_ON_FACEBOOK">Share on Facebook</string>
     <string name="SHARE_ON_OTHER">Share on other social networks</string>
+    <string name="NO">No</string>
+    <string name="YES">Yes</string>
+    <string name="GAME_FINISHED_TEXT">The game is finished.\nDid you enjoy the %s?</string>
+    <string name="RECOMMEND_ON_PLAY_TEXT">AWESOME! Would you recommend us in Google Play?</string>
+    <string name="SUGGESTIONS_TEXT">OOPS! We are sorry for that!\nPlease tell us why you don\'t like the App?</string>
+    <string name="SEND">Send</string>
 </resources>
