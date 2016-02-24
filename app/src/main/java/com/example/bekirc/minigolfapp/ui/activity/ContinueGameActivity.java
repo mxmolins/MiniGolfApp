@@ -75,7 +75,7 @@ public class ContinueGameActivity extends BaseActionBarActivity implements GameF
     }
 
     private void showResultDialog() {
-        ResultDialogFragment fragment = ResultDialogFragment.newInstance(game.getPlayerList());
+        ResultDialogFragment fragment = ResultDialogFragment.newInstance(game.getPlayerList(), currentGameTurn);
         showDialogFragment(fragment, ResultDialogFragment.TAG);
     }
 

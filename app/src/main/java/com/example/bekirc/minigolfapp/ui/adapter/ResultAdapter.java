@@ -22,10 +22,12 @@ public class ResultAdapter extends RecyclerView.Adapter<ResultAdapter.ViewHolder
 
     private final Context context;
     private ArrayList<Player> itemList;
+    private int turnNumber;
 
-    public ResultAdapter(Context context, ArrayList<Player> itemList) {
+    public ResultAdapter(Context context, ArrayList<Player> itemList, int turnNumber) {
         this.context = context;
         this.itemList = itemList;
+        this.turnNumber = turnNumber;
     }
 
     @Override
@@ -40,7 +42,7 @@ public class ResultAdapter extends RecyclerView.Adapter<ResultAdapter.ViewHolder
         String playerNoText = (position + 1) + "";
         holder.playerNoText.setText(playerNoText);
         holder.playerNameText.setText(item.getName());
-        String playerScoreText = item.getScore() + "";
+        String playerScoreText = item.getScoreUntilTurnNumber(turnNumber) + "";
         holder.playerScoreText.setText(playerScoreText);
     }
 

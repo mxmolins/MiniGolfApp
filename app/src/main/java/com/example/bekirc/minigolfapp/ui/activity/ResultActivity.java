@@ -45,7 +45,7 @@ public class ResultActivity extends BaseActionBarActivity {
 
         recyclerview.setLayoutManager(new LinearLayoutManager(this));
         recyclerview.addItemDecoration(new DividerItemDecoration(this, null));
-        ResultAdapter adapter = new ResultAdapter(this, playerList);
+        ResultAdapter adapter = new ResultAdapter(this, playerList, game.getTotalTurnNumber());
         recyclerview.setAdapter(adapter);
     }
 
@@ -78,9 +78,9 @@ public class ResultActivity extends BaseActionBarActivity {
 
     private String getWinnerName(ArrayList<Player> playerList) {
         String winnerName = "";
-        int winnerScore = 0;
+        int winnerScore = Integer.MAX_VALUE;
         for (Player player : playerList) {
-            if (player.getScore() > winnerScore) {
+            if (player.getScore() < winnerScore) {
                 winnerScore = player.getScore();
                 winnerName = player.getName();
             }

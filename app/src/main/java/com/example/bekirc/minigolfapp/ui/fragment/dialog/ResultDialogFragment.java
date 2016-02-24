@@ -26,13 +26,16 @@ public class ResultDialogFragment extends BaseDialogFragment {
 
     public static final String TAG = "ResultDialogFragment";
     public static final String PLAYER_LIST = "playerList";
+    public static final String TURN_NUMBER = "turnNumber";
 
     private ArrayList<Player> playerList;
+    private int turnNumber;
 
-    public static ResultDialogFragment newInstance(ArrayList<Player> playerList) {
+    public static ResultDialogFragment newInstance(ArrayList<Player> playerList, int turnNumber) {
         ResultDialogFragment resultDialogFragment = new ResultDialogFragment();
         Bundle bundle = new Bundle();
         bundle.putParcelableArrayList(PLAYER_LIST, playerList);
+        bundle.putInt(TURN_NUMBER, turnNumber);
         resultDialogFragment.setArguments(bundle);
         return resultDialogFragment;
     }
@@ -42,6 +45,7 @@ public class ResultDialogFragment extends BaseDialogFragment {
         super.onCreate(savedInstanceState);
 
         playerList = getArguments().getParcelableArrayList(PLAYER_LIST);
+        turnNumber = getArguments().getInt(TURN_NUMBER, 0);
     }
 
     @NonNull
@@ -56,7 +60,7 @@ public class ResultDialogFragment extends BaseDialogFragment {
         DividerItemDecoration decoration = new DividerItemDecoration(getContext(), null);
         decoration.setVerticalSpace(Util.dpToPx(8));
         recyclerView.addItemDecoration(decoration);
-        ResultAdapter adapter = new ResultAdapter(getContext(), playerList);
+        ResultAdapter adapter = new ResultAdapter(getContext(), playerList, turnNumber);
         recyclerView.setAdapter(adapter);
 
         AlertDialog.Builder builder = new AlertDialog.Builder(context);
