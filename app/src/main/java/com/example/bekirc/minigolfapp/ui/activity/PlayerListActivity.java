@@ -8,6 +8,7 @@ import android.support.v7.widget.RecyclerView;
 import android.text.TextUtils;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Toast;
 
 import com.example.bekirc.minigolfapp.R;
 import com.example.bekirc.minigolfapp.data.Game;
@@ -87,6 +88,7 @@ public class PlayerListActivity extends BaseActionBarActivity {
         ArrayList<Player> playerList = game.getPlayerList();
         for (Player player : playerList) {
             if (TextUtils.isEmpty(player.getName())) {
+                Toast.makeText(this, getString(R.string.PROVIDE_NAME_FOR_PLAYER), Toast.LENGTH_LONG).show();
                 return false;
             }
         }

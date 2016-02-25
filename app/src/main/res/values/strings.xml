@@ -42,4 +42,11 @@
     <string name="RECOMMEND_ON_PLAY_TEXT">AWESOME! Would you recommend us in Google Play?</string>
     <string name="SUGGESTIONS_TEXT">OOPS! We are sorry for that!\nPlease tell us why you don\'t like the App?</string>
     <string name="SEND">Send</string>
+    <string name="INFORMATION_TEXT">The minigolf score app is a app that will improve your minigolf experience.\n
+★ COUNT the shots it took to each person for each hole.\n
+★ VIEW real-time scoreboard. \n
+★ SHARE the final score with your friends.\n
+★ CONTINUE saved games.</string>
+    <string name="HOLES">Holes</string>
+    <string name="PROVIDE_NAME_FOR_PLAYER">Please, provide a name for this player</string>
 </resources>

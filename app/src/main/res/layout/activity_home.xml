@@ -40,7 +40,7 @@
         android:layout_marginTop="16dp"
         android:gravity="center"
         android:text="@string/MINI_GOLF"
-        android:textAllCaps="true"
+        android:textColor="@color/white"
         android:textSize="42sp"/>
 
     <TextView
@@ -51,7 +51,7 @@
         android:layout_marginRight="16dp"
         android:gravity="center"
         android:text="@string/SCORE_APP"
-        android:textAllCaps="true"
+        android:textColor="@color/white"
         android:textSize="26sp"/>
 
     <ImageView
